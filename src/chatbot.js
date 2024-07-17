@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   TextField,
   Button,
@@ -12,55 +12,20 @@ import {
   Box,
   Container,
   CssBaseline,
-  AppBar,
-  Toolbar,
 } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import './ChatbotForm.css';
 
-const lightTheme = createTheme({
-  palette: {
-    mode: 'light',
-    primary: {
-      main: '#00a4a6',
-    },
-    secondary: {
-      main: '#333',
-    },
-  },
-  typography: {
-    fontFamily: 'Helvetica, Arial, sans-serif',
-  },
-});
-
-const darkTheme = createTheme({
-  palette: {
-    mode: 'dark',
-    primary: {
-      main: '#00a4a6',
-    },
-    secondary: {
-      main: '#fff',
-    },
-    background: {
-      default: '#333',
-      paper: '#424242',
-    },
-  },
-  typography: {
-    fontFamily: 'Helvetica, Arial, sans-serif',
-  },
-});
+const theme = createTheme();
 
 const ChatbotForm = () => {
-  const [themeMode, setThemeMode] = useState('light');
-  const [botName, setBotName] = useState('');
-  const [description, setDescription] = useState('');
-  const [purpose, setPurpose] = useState('');
-  const [goals, setGoals] = useState([]);
-  const [welcomeMessage, setWelcomeMessage] = useState('');
-  const [defaultResponse, setDefaultResponse] = useState('');
-  const [dataCollection, setDataCollection] = useState(false);
+  const [botName, setBotName] = React.useState('');
+  const [description, setDescription] = React.useState('');
+  const [purpose, setPurpose] = React.useState('');
+  const [goals, setGoals] = React.useState([]);
+  const [welcomeMessage, setWelcomeMessage] = React.useState('');
+  const [defaultResponse, setDefaultResponse] = React.useState('');
+  const [dataCollection, setDataCollection] = React.useState(false);
 
   const handleGoalsChange = (event) => {
     const value = event.target.value;
@@ -72,36 +37,13 @@ const ChatbotForm = () => {
     // Handle form submission logic
   };
 
-  const handleThemeChange = () => {
-    setThemeMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
-  };
-
-  const currentTheme = themeMode === 'light' ? lightTheme : darkTheme;
-
   return (
-    <ThemeProvider theme={currentTheme}>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AppBar position="static" color="primary">
-        <Toolbar>
-          <Typography variant="h6" sx={{ flexGrow: 1 }} >
-            Chatbot Builder
-          </Typography>
-          <FormControlLabel
-            control={
-              <Switch
-                onChange={handleThemeChange}
-                name="themeToggle"
-                color="default"
-              />
-            }
-            label="Dark Mode"
-          />
-        </Toolbar>
-      </AppBar>
       <Container component="main" maxWidth="sm">
         <Box sx={{ mt: 8 }}>
           <Typography variant="h4" gutterBottom>
-            Create Your AI Powered Chatbot
+            Create AI Chatbot
           </Typography>
           <form onSubmit={handleSubmit}>
             <TextField
@@ -141,8 +83,6 @@ const ChatbotForm = () => {
                 <MenuItem value="customer-support">Customer Support</MenuItem>
                 <MenuItem value="faq">FAQ</MenuItem>
                 <MenuItem value="lead-generation">Lead Generation</MenuItem>
-                <MenuItem value="lead-generation">Operational Efficiency</MenuItem>
-                <MenuItem value="lead-generation">Marketing and Promotion</MenuItem>
               </Select>
             </FormControl>
             <FormControl fullWidth margin="normal" className="form-field">
@@ -158,8 +98,6 @@ const ChatbotForm = () => {
                 <MenuItem value="answer-questions">Answer Common Questions</MenuItem>
                 <MenuItem value="book-appointments">Book Appointments</MenuItem>
                 <MenuItem value="generate-leads">Generate Leads</MenuItem>
-                <MenuItem value="generate-leads">Market New Products</MenuItem>
-                <MenuItem value="generate-leads">Market On Sale Products</MenuItem>
               </Select>
             </FormControl>
             <TextField
@@ -196,7 +134,7 @@ const ChatbotForm = () => {
               label="Enable Data Collection"
               className="form-field"
             />
-            <Box sx={{ mt: 4 }}>
+            <Box sx={{ mt: 3 }}>
               <Button type="submit" fullWidth variant="contained" color="primary">
                 Create Chatbot
               </Button>
