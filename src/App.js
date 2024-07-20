@@ -145,7 +145,7 @@ const ChatbotForm = () => {
                 <MenuItem value="lead-generation">Marketing and Promotion</MenuItem>
               </Select>
             </FormControl>
-            <FormControl fullWidth margin="normal" className="form-field">
+            <FormControl fullWidth margin="contained" className="form-field">
               <InputLabel id="goals-label">Goals</InputLabel>
               <Select
                 labelId="goals-label"

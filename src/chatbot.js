@@ -83,6 +83,10 @@ const ChatbotForm = () => {
                 <MenuItem value="customer-support">Customer Support</MenuItem>
                 <MenuItem value="faq">FAQ</MenuItem>
                 <MenuItem value="lead-generation">Lead Generation</MenuItem>
+                <MenuItem value="lead-generation">Operational Efficiency</MenuItem>
+                <MenuItem value="lead-generation">Marketing and Promotion</MenuItem>
+   
+                
               </Select>
             </FormControl>
             <FormControl fullWidth margin="normal" className="form-field">
@@ -94,10 +98,14 @@ const ChatbotForm = () => {
                 value={goals}
                 onChange={handleGoalsChange}
                 renderValue={(selected) => selected.join(', ')}
+                label="Goals"
               >
                 <MenuItem value="answer-questions">Answer Common Questions</MenuItem>
                 <MenuItem value="book-appointments">Book Appointments</MenuItem>
                 <MenuItem value="generate-leads">Generate Leads</MenuItem>
+                <MenuItem value="generate-leads">Market New Products</MenuItem>
+                <MenuItem value="generate-leads">Generate Leads</MenuItem>
+                <MenuItem value="generate-leads">Market On Sale Products</MenuItem>
               </Select>
             </FormControl>
             <TextField
